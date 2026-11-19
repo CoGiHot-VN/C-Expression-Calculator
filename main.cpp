@@ -6,7 +6,9 @@ int main()
     char tiep; 
     do { 
 
-        long long i=0,so=0,ch,tong=0,tich=0;
+        long long so=0,tong=0,tich=0;
+
+        int ch;
 
         char dau_ct='+',dau_nc='+';
 
@@ -14,7 +16,7 @@ int main()
 
         cout<<"Nhap bieu thuc: ";
 
-        while ((ch = getchar()) != '\n') {
+        while ((ch = getchar()) != '\n'&& ch != EOF) {
             char c = char(ch);
             
             if(c>='0'&&c<='9')
@@ -25,9 +27,8 @@ int main()
                     break;       
                 }
                 co_so=true;    
-                co_cach=false;   
-                i=c-'0';         
-                so=so*10+i;      
+                co_cach=false;         
+                so=so*10+(c-'0');      
             }
 
             else if(c=='+'||c=='-'||c=='*'||c=='/'||c=='=')
@@ -45,15 +46,6 @@ int main()
                     break;
                 }
 
-                if(c=='='){
-                    if(!co_so){
-                        cout<<"Loi cu phap: thieu so truoc '='"<<endl;
-                        co_loi=true;
-                        break;
-                    }
-                    co_bang=true; 
-                    break;        
-                }   
 
                 if(co_so){
                     if(dau_nc=='*') tich*=so;
@@ -81,6 +73,15 @@ int main()
                     dau_nc=c; 
                 }
 
+                if(c=='='){
+                    if(!co_so){
+                        cout<<"Loi cu phap: thieu so truoc '='"<<endl;
+                        co_loi=true;
+                        break;
+                    }
+                    co_bang=true; 
+                    break;        
+                }   
                 so=0;
                 co_so=false;
                 co_dau=true;
@@ -95,10 +96,9 @@ int main()
             }
         }
 
-        if (ch != '\n') {
-            while ((ch = getchar()) != '\n');
+        if (ch != '\n'&& ch != EOF) {
+            while ((ch = getchar()) != '\n'&& ch != EOF);
         }
-
 
         if(!co_loi){
             if(!co_bang) cout<<"Loi: thieu dau '='"<<endl; 
