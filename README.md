@@ -1,5 +1,5 @@
 # C++-Expression-Calculator
-My very first program in life. I'm new to C++ and this is my mid-term test
+This is my first C++ project. It is a simple arithmetic expression calculator developed as part of my programming course.
 It's just a simple calculator using long long so it just can work in small numbers
 
 Introduction:
